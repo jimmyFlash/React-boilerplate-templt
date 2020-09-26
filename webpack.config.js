@@ -2,6 +2,10 @@ let path = require('path');
 // configure Webpack to exclude all packages under the node_modules folder
 let nodeExternals = require('webpack-node-externals');
 
+// previously we asked Babel to copy files that weren’t transpiled. 
+//However, Webpack isn’t able to do that, so we need to use the HTML Webpack Plugin.
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+
 // include babel-loader to run on all .js files. We will create a shared object defining the module section that we can re-use for both targets
 const moduleObj = {
     rules: [
@@ -23,7 +27,10 @@ const client = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist/public')
     },
-    module: moduleObj
+    module: moduleObj,
+    plugins: [ // add a plugins key to the client config to define and use the html webpack plugin
+        new HtmlWebPackPlugin({ template: 'src/client/index.html' })
+      ]
 };
 
 // entry point, for the other for the web server
