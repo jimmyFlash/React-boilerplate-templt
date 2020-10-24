@@ -14,7 +14,7 @@
     "test": "jest ./src"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./src/enzyme.setup.js",
+    "setupFilesAfterEnv": ["./src/enzyme.setup.js"],
     "setupFiles": [
       "raf/polyfill"
     ]
