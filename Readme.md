@@ -6,7 +6,7 @@ This is my react-boilerplate, created from scratch. using Bable, React, WebPack,
 
 ```bash
 npm install
-npm run build
+npm run build-p
 npm start
 ```
 
